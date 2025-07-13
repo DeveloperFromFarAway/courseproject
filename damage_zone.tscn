@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhj0jylag7g0e"]
+
+[sub_resource type="GDScript" id="GDScript_6uucj"]
+script/source = "extends Area2D
+
+@export var width: float = 40.0:
+	set(value):
+		width = max(1.0, value)
+		update_shape()
+@export var height: float = 40.0:
+	set(value):
+		height = max(1.0, value)
+		update_shape()
+
+func _ready() -> void:
+	update_shape()
+
+func update_shape():
+	$CollisionShape2D.scale = Vector2(width, height)
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.has_method(\"take_damage\"):
+		body.take_damage(body.current_health)
+		# Если нужно немедленно удалить объект:
+		#if body.has_method(\"queue_free\"):
+			#body.queue_free()
+			# Альтернатива для любых объектов:
+			# body.get_parent().remove_child(body)
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yjtam"]
+size = Vector2(237.5, 24)
+
+[node name="DamageZone" type="Area2D"]
+collision_layer = 0
+collision_mask = 15
+script = SubResource("GDScript_6uucj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 0
+visibility_layer = 15
+shape = SubResource("RectangleShape2D_yjtam")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

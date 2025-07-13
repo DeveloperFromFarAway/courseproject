@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctxstg78gpp6n"]
+
+[ext_resource type="Script" uid="uid://2y24vsjwbogr" path="res://Mobs/skeleton_arrow.gd" id="1_mjxw1"]
+[ext_resource type="Texture2D" uid="uid://djpopuf2o7n70" path="res://Skeleton_Archer/Arrow.png" id="2_l4d2k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y64y3"]
+size = Vector2(23, 5)
+
+[node name="Arrow" type="Area2D"]
+collision_layer = 0
+collision_mask = 7
+script = ExtResource("1_mjxw1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(34.5, 2.5)
+shape = SubResource("RectangleShape2D_y64y3")
+
+[node name="Arrow" type="Sprite2D" parent="."]
+position = Vector2(23, 2)
+texture = ExtResource("2_l4d2k")
+
+[node name="LifetimeTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_Arrow_body_entered"]

@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://b06g487w1kqp7"]
+
+[ext_resource type="Texture2D" uid="uid://6blct0k52d7m" path="res://healBar/healBar3.png" id="1_e1wol"]
+[ext_resource type="Texture2D" uid="uid://catay78jucvdd" path="res://healBar/healBar1.png" id="2_oho4q"]
+[ext_resource type="Texture2D" uid="uid://c6y2bvufacxtm" path="res://healBar/healBar2.png" id="3_o1e4o"]
+
+[node name="ProgressHealBar" type="TextureProgressBar"]
+offset_right = 42.0
+offset_bottom = 4.0
+value = 100.0
+nine_patch_stretch = true
+texture_under = ExtResource("1_e1wol")
+texture_over = ExtResource("2_oho4q")
+texture_progress = ExtResource("3_o1e4o")
+tint_under = Color(1, 1, 1, 0.666667)
+tint_progress = Color(0.811765, 0, 0, 1)

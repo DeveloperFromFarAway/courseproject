@@ -1,0 +1,124 @@
+[gd_scene load_steps=12 format=3 uid="uid://qfoujglclg80"]
+
+[ext_resource type="PackedScene" uid="uid://drac4sv4ieigk" path="res://Player/player.tscn" id="1_ahdyt"]
+[ext_resource type="Texture2D" uid="uid://ddfimw7ycmt0a" path="res://Environment Constructor1/background1.png" id="2_32sgp"]
+[ext_resource type="Texture2D" uid="uid://b031mqeh0v133" path="res://Environment Constructor1/background2.png" id="3_dc8xx"]
+[ext_resource type="Texture2D" uid="uid://i8bpijg6kyir" path="res://Environment Constructor1/background3.png" id="4_50re7"]
+[ext_resource type="Texture2D" uid="uid://bey10bgmwmmie" path="res://Environment Constructor1/background4b.png" id="5_nrr3j"]
+[ext_resource type="PackedScene" uid="uid://bhj0jylag7g0e" path="res://damage_zone.tscn" id="9_1eqd3"]
+[ext_resource type="PackedScene" uid="uid://bevr4cdkjndb2" path="res://enduranceBar/player_endurance_bar.tscn" id="9_16vas"]
+
+[sub_resource type="Gradient" id="Gradient_5vfjg"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_p53w4"]
+gradient = SubResource("Gradient_5vfjg")
+fill_from = Vector2(1, 0)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_1xfo2"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ujnde"]
+gradient = SubResource("Gradient_1xfo2")
+fill_from = Vector2(1, 1)
+
+[node name="Level1" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_limit_begin = Vector2(-10000, 0)
+scroll_limit_end = Vector2(10000, 0)
+
+[node name="ParallaxLayer0" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(960, 0)
+
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground/ParallaxLayer0"]
+offset_top = -500.0
+offset_right = 960.0
+offset_bottom = 1100.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="ParallaxBackground/ParallaxLayer0"]
+offset_left = 960.0
+offset_top = -500.0
+offset_right = 1920.0
+offset_bottom = 1100.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ParallaxLayer1" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.2, 1)
+motion_mirroring = Vector2(960, 0)
+
+[node name="Background1" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer1"]
+position = Vector2(480, 240)
+texture = ExtResource("2_32sgp")
+
+[node name="Background2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer1"]
+position = Vector2(1440, 240)
+texture = ExtResource("2_32sgp")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.4, 1)
+motion_mirroring = Vector2(960, 0)
+
+[node name="Background2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(480, 240)
+texture = ExtResource("3_dc8xx")
+
+[node name="Background3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(1440, 240)
+texture = ExtResource("3_dc8xx")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.6, 1)
+motion_mirroring = Vector2(960, 0)
+
+[node name="Background3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2(480, 240)
+texture = ExtResource("4_50re7")
+
+[node name="Background4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2(1440, 240)
+texture = ExtResource("4_50re7")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(960, 0)
+
+[node name="Background4b" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2(480, 240)
+texture = ExtResource("5_nrr3j")
+
+[node name="Background4b2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2(1440, 240)
+texture = ExtResource("5_nrr3j")
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5"]
+position = Vector2(963.25, 30)
+scale = Vector2(30.0234, 1)
+texture = SubResource("GradientTexture2D_p53w4")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5"]
+position = Vector2(963.25, 451)
+scale = Vector2(30.023, 1)
+texture = SubResource("GradientTexture2D_ujnde")
+
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("1_ahdyt")]
+position = Vector2(79, 324)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ProgressEnduranceBar" parent="CanvasLayer" instance=ExtResource("9_16vas")]
+offset_left = 5.0
+offset_top = 11.0
+offset_right = 400.0
+offset_bottom = 38.0
+
+[node name="DamageZone" parent="." instance=ExtResource("9_1eqd3")]
+position = Vector2(790, 750)
+width = 30.0
+height = 2.0

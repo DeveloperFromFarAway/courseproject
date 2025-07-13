@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=3 uid="uid://cwej2ybcbfeej"]
+
+[ext_resource type="Script" uid="uid://d1ah8jpxk5ke4" path="res://touch_screen_button.gd" id="1_2u85s"]
+[ext_resource type="Texture2D" uid="uid://bmm1j70mnqf5" path="res://management/attack.png" id="2_q0cv6"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="4_mufgl"]
+[ext_resource type="Texture2D" uid="uid://bporyvbiqadl2" path="res://management/slide.png" id="5_2qwnp"]
+[ext_resource type="Texture2D" uid="uid://c4s8ii1tciofp" path="res://management/alt.png" id="5_rd7r3"]
+[ext_resource type="Texture2D" uid="uid://c22b6jcdqr7n3" path="res://management/up.png" id="6_7yvid"]
+[ext_resource type="Texture2D" uid="uid://djniju7k6ibqp" path="res://management/strelka.png" id="7_7yvid"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_2u85s")
+
+[node name="Virtual Joystick" parent="." instance=ExtResource("4_mufgl")]
+offset_left = 2.0
+offset_top = -389.0
+offset_right = 302.0
+offset_bottom = -89.0
+scale = Vector2(1.3, 1.3)
+action_up = ""
+action_down = ""
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -391.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="HBoxContainer"]
+position = Vector2(215, 333)
+scale = Vector2(1.42982, 1.3125)
+texture_normal = ExtResource("5_rd7r3")
+
+[node name="TouchScreenAttack" type="TouchScreenButton" parent="HBoxContainer"]
+position = Vector2(84, 472)
+scale = Vector2(1.31579, 1.375)
+texture_normal = ExtResource("2_q0cv6")
+
+[node name="TouchScreenSlide" type="TouchScreenButton" parent="HBoxContainer"]
+position = Vector2(234, 485)
+scale = Vector2(1.23737, 1.13672)
+texture_normal = ExtResource("5_2qwnp")
+
+[node name="TouchScreenUp" type="TouchScreenButton" parent="HBoxContainer"]
+position = Vector2(83, 339)
+scale = Vector2(1.15389, 1.10463)
+texture_normal = ExtResource("6_7yvid")
+
+[node name="TouchScreenStrelka" type="TouchScreenButton" parent="HBoxContainer"]
+position = Vector2(313, 14)
+scale = Vector2(1.42982, 1.3125)
+texture_normal = ExtResource("7_7yvid")
+
+[connection signal="pressed" from="HBoxContainer/TouchScreenButton" to="." method="_on_touch_screen_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/TouchScreenAttack" to="." method="_on_touch_screen_attack_pressed"]
+[connection signal="pressed" from="HBoxContainer/TouchScreenSlide" to="." method="_on_touch_screen_slide_pressed"]
+[connection signal="pressed" from="HBoxContainer/TouchScreenUp" to="." method="_on_touch_screen_up_pressed"]
+[connection signal="pressed" from="HBoxContainer/TouchScreenStrelka" to="." method="_on_touch_screen_strelka_pressed"]

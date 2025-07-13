@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://bevr4cdkjndb2"]
+
+[ext_resource type="Texture2D" uid="uid://d0iun8qvj4swy" path="res://enduranceBar/enduranceBar3.png" id="1_8v2tq"]
+[ext_resource type="Texture2D" uid="uid://knyn0vk7wksf" path="res://enduranceBar/enduranceBar1.png" id="2_snpga"]
+[ext_resource type="Texture2D" uid="uid://b1gb5vht2rysy" path="res://enduranceBar/enduranceBar2.png" id="3_otpwx"]
+[ext_resource type="Script" uid="uid://cdngxl73225hi" path="res://enduranceBar/player_endurance_bar.gd" id="4_0d6my"]
+
+[node name="ProgressEnduranceBar" type="TextureProgressBar"]
+offset_right = 395.0
+offset_bottom = 40.0
+nine_patch_stretch = true
+texture_under = ExtResource("1_8v2tq")
+texture_over = ExtResource("2_snpga")
+texture_progress = ExtResource("3_otpwx")
+tint_progress = Color(0.907186, 0.751248, 0.359184, 1)
+script = ExtResource("4_0d6my")

@@ -1,0 +1,85 @@
+[gd_scene load_steps=10 format=3 uid="uid://kdjnek7h0ln8"]
+
+[ext_resource type="Script" uid="uid://cp1yxs4hqf4ep" path="res://death_screen.gd" id="1_agv4r"]
+[ext_resource type="Script" uid="uid://b8eae630phcdx" path="res://test.gd" id="1_jtwq4"]
+[ext_resource type="FontFile" uid="uid://cb5ehbedhxqb6" path="res://font/Philosopher-BoldItalic.ttf" id="2_4rh33"]
+[ext_resource type="Script" uid="uid://bt4r4ocf6a5q8" path="res://backToMenu.gd" id="2_lsgg4"]
+[ext_resource type="FontFile" uid="uid://b0r4lwlxc7e2y" path="res://font/Philosopher-Regular.ttf" id="3_fv8h7"]
+
+[sub_resource type="Gradient" id="Gradient_last7"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.455224, 0.772388, 0.988806)
+colors = PackedColorArray(0.27, 0.0108, 0.0108, 0, 0.3, 0.012, 0.012, 0.784314, 0, 0, 0, 0.784314)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ddugp"]
+gradient = SubResource("Gradient_last7")
+width = 1152
+height = 648
+fill = 1
+fill_from = Vector2(0.517094, 0.495726)
+
+[sub_resource type="Gradient" id="Gradient_3ak6r"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.149254, 0.496269)
+colors = PackedColorArray(0.23, 0.0092, 0.0092, 1, 0.27, 0.0108, 0.0108, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xujvq"]
+gradient = SubResource("Gradient_3ak6r")
+width = 254
+height = 254
+fill = 1
+fill_from = Vector2(0.517094, 0.495726)
+
+[node name="deathScreen" type="CanvasLayer"]
+script = ExtResource("1_agv4r")
+
+[node name="Blood" type="Sprite2D" parent="."]
+position = Vector2(1, 1)
+texture = SubResource("GradientTexture2D_ddugp")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+offset_right = 1147.0
+offset_bottom = 640.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Sprite2D" type="Sprite2D" parent="CenterContainer/VBoxContainer"]
+position = Vector2(170.404, 120.827)
+scale = Vector2(4.5165, 2.53407)
+texture = SubResource("GradientTexture2D_xujvq")
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_4rh33")
+theme_override_font_sizes/font_size = 42
+text = "ВЫ
+ПОГИБЛИ"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="btnMenu" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_fv8h7")
+theme_override_font_sizes/font_size = 26
+text = "В меню"
+script = ExtResource("2_lsgg4")
+metadata/_edit_use_anchors_ = true
+
+[node name="btnPlay" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_fv8h7")
+theme_override_font_sizes/font_size = 26
+text = "В начало"
+script = ExtResource("1_jtwq4")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/btnMenu" to="CenterContainer/VBoxContainer/HBoxContainer/btnMenu" method="_on_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/btnPlay" to="CenterContainer/VBoxContainer/HBoxContainer/btnPlay" method="_on_pressed"]
